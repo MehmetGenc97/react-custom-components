@@ -12,6 +12,7 @@ function App() {
 
   const [value, setValue] = useState<number[]>(values);
   const [enable, setEnable] = useState<boolean>(false);
+  const [count, setCount] = useState<number>(0)
   const customRef = useRef<CustomRadioGroupHandles>(null);
 
   function gizle() {
@@ -88,6 +89,19 @@ function App() {
           customRef.current!.datasource = values;
         }}>Datasource Load</Button>
       </Col>
+    </Row>
+    <Row>
+    <Col><Button onClick={() => {
+      setCount(count => count - 1)
+    }}>-</Button></Col>
+    <Col>
+      <div style={{border: "2px solid #2f3e4f", borderRadius: "5px", padding: "10px", backgroundColor: "#485769", width: "64px"}}>
+        <p style={{fontSize: "16px", fontWeight: "bold"}}>% {count}</p>
+      </div>
+    </Col>
+    <Col><Button onClick={() => {
+      setCount(count => count + 1)
+    }}>+</Button></Col>
     </Row>
     </>
   );
